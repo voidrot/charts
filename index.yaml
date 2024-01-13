@@ -3,6 +3,16 @@ entries:
   cloudflared:
   - apiVersion: v2
     appVersion: 2024.1.2
+    created: "2024-01-13T08:30:34.448009626Z"
+    description: Deploys cloudflared
+    digest: d7547fab9bc50caa073489dc7557a6a6a2ecc0b4db39986df27f043db9aba417
+    name: cloudflared
+    type: application
+    urls:
+    - https://github.com/buckbrady/charts/releases/download/cloudflared-0.1.2/cloudflared-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 2024.1.2
     created: "2024-01-13T08:23:35.236459358Z"
     description: Deploys cloudflared
     digest: 18c8a5e6302534fae74e49050b939f553c651a9fef527a00713f1fc3387241cc
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/buckbrady/charts/releases/download/cloudflared-0.1.1/cloudflared-0.1.1.tgz
     version: 0.1.1
-generated: "2024-01-13T08:23:35.236469136Z"
+generated: "2024-01-13T08:30:34.448018162Z"
