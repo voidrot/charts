@@ -1,6 +1,6 @@
 # cloudflared
 
-![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2023.8.2](https://img.shields.io/badge/AppVersion-2023.8.2-informational?style=flat-square)
+![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2024.1.2](https://img.shields.io/badge/AppVersion-2024.1.2-informational?style=flat-square)
 
 Deploys cloudflared
 
@@ -12,12 +12,12 @@ Deploys cloudflared
 | autoscaling.enabled | bool | `true` |  |
 | autoscaling.maxReplicas | int | `6` |  |
 | autoscaling.minReplicas | int | `3` |  |
-| autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
-| autoscaling.targetMemoryUtilizationPercentage | int | `80` |  |
+| autoscaling.targetCPUUtilizationPercentage | int | `250` |  |
+| autoscaling.targetMemoryUtilizationPercentage | int | `250` |  |
 | fullnameOverride | string | `"cloudflared"` |  |
 | image.pullPolicy | string | `"Always"` |  |
 | image.repository | string | `"cloudflare/cloudflared"` |  |
-| image.tag | string | `"2023.8.2"` |  |
+| image.tag | string | `"2024.1.2"` |  |
 | imagePullSecrets | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | namespace | string | `"cloudflared"` |  |
