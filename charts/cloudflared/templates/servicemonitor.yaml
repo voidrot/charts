@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: cloudflared
+  namespace: {{ .Values.namespace }}
+  labels:
+    release: promteheus
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: cloudflared
+      app.kubernetes.io/instance: cloudflared
+  namespaceSelector:
+    matchNames:
+    - cloudflared
+  endpoints:
+  - port: http
+    interval: "5s"

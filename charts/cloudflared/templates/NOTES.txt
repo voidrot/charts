@@ -1,0 +1,1 @@
+cloudflared is now running in the cluster. You can manage proxied domains via the zero trust dashboard.
