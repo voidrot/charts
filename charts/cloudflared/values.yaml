@@ -6,7 +6,7 @@ image:
   repository: cloudflare/cloudflared
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "2024.1.2"
+  tag: "2024.2.1"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -49,7 +49,7 @@ resources:
   #   memory: 128Mi
 
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 3
   maxReplicas: 6
   targetCPUUtilizationPercentage: 250
@@ -79,3 +79,6 @@ tokenSecretName: ""
 
 # -- cloudflared plain text token
 token: ""
+
+metrics:
+  enabled: false
