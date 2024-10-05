@@ -1,1 +1,3 @@
 cloudflared is now running in the cluster. You can manage proxied domains via the zero trust dashboard.
+
+To route to a service you need to enter the cluster address as the target. Example: service-name.namespace.svc.cluster.local:port
