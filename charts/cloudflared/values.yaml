@@ -1,6 +1,6 @@
 namespace: cloudflared
 
-replicaCount: 3
+replicaCount: 1
 
 image:
   repository: cloudflare/cloudflared
