@@ -1,0 +1,10 @@
+{
+  "packages": {
+    "charts/cloudflared": {
+      "release-type": "simple",
+      "extra-files": [
+        "Chart.yaml"
+      ]
+    }
+  }
+}
