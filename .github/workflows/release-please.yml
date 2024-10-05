@@ -13,9 +13,7 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
-      - uses: google-github-actions/release-please-action@v3
+      - uses: googleapis/release-please-action@v4
         with:
-          release-type: simple
-          package-name: charts
-          skip-github-release: true
+          include-component-in-tag: true
           token: "${{ secrets.RUNNER_TOKEN }}"
