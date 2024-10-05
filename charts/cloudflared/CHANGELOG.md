@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/voidrot/charts/compare/v0.3.0...v0.3.1) (2024-10-05)
+
+
+### Bug Fixes
+
+* **cloudflared:** Update cloudflared replicas ([#6](https://github.com/voidrot/charts/issues/6)) ([c00d777](https://github.com/voidrot/charts/commit/c00d777943c83dfd03323d4dec2f91b1eb46a497))
+
 ## [0.3.0](https://github.com/voidrot/charts/compare/v0.2.1...v0.3.0) (2024-10-05)
 
 
