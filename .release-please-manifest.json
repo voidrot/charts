@@ -1,3 +1,4 @@
 {
-  "charts/cloudflared": "0.3.1"
+  "charts/cloudflared": "0.3.1",
+  "charts/stack-auth": "0.0.0"
 }
