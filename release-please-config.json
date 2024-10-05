@@ -5,6 +5,12 @@
       "extra-files": [
         "Chart.yaml"
       ]
+    },
+    "charts/stack-auth": {
+      "release-type": "simple",
+      "extra-files": [
+        "Chart.yaml"
+      ]
     }
   }
 }
