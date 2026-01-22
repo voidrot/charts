@@ -1,5 +1,9 @@
 {
   "packages": {
-    "path/to/pkg": {}
+    "charts/cloudflared": {
+      "release-type": "helm",
+      "changelog-path": "charts/cloudflared/CHANGELOG.md",
+      "package-name": "cloudflared"
+    }
   }
 }
