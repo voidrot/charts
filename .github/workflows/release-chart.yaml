@@ -32,4 +32,4 @@ jobs:
             oci_registry: ghcr.io/voidrot/charts
             oci_username: voidrot
             oci_password: ${{ secrets.GITHUB_TOKEN }}
-            github_token: ${{ secrets.GITHUB_TOKEN }}
+            github_token: ${{ secrets.GH_PAT }}
