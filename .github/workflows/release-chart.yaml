@@ -33,4 +33,4 @@ jobs:
             oci_username: voidrot
             oci_password: ${{ secrets.GITHUB_TOKEN }}
             github_token: ${{ secrets.GH_PAT }}
-            skip_gh_release: false
+            # skip_gh_release: "false"
