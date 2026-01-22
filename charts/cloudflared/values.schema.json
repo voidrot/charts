@@ -51,7 +51,7 @@
       "type": "array"
     },
     "extraLabels": {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "required": [],
       "title": "extraLabels",
       "type": "object"
@@ -429,7 +429,6 @@
     "tolerations",
     "affinity",
     "extraCommands",
-    "extraLabels",
     "tunnel"
   ],
   "type": "object"

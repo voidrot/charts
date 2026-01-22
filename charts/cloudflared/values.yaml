@@ -110,6 +110,10 @@ affinity: {}
 # Example: extra_commands: ["--loglevel","info"]
 extraCommands: []
 
+# @schema
+# type: object
+# additionalProperties: true
+# @schema
 extraLabels: {}
 
 # Tunnel configuration for cloudflared
