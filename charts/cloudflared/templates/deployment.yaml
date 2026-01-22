@@ -76,7 +76,7 @@ spec:
             - name: TUNNEL_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: {{- if .Values.tunnel.createSecret }}{{ include "cloudflared.fullname" . }}-tunnel{{- else }}{{ .Values.tunnel.secretName }}{{- end }}
+                  name: {{ if .Values.tunnel.createSecret }}{{ include "cloudflared.fullname" . }}-tunnel{{ else }}{{ .Values.tunnel.secretName }}{{ end }}
                   key: {{ .Values.tunnel.secretKey }}
           {{- end }}
       {{- if .Values.volumes }}
