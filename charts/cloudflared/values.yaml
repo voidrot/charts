@@ -108,9 +108,9 @@ affinity: {}
 
 # Extra command arguments appended before `run` in the container `command`.
 # Example: extra_commands: ["--loglevel","info"]
-extra_commands: []
+extraCommands: []
 
-extra_labels: {}
+extraLabels: {}
 
 # Tunnel configuration for cloudflared
 tunnel:
