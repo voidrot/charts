@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/voidrot/charts/compare/cloudflared-v1.1.1...cloudflared-v1.1.2) (2026-01-22)
+
+
+### Bug Fixes
+
+* Update cloudflared chart for consistency in extraCommands and extraLabels, and adjust release configuration ([1a4e91c](https://github.com/voidrot/charts/commit/1a4e91cfea7bc284b4363ff93dac3b9307a8db9c))
+
 ## [1.1.1](https://github.com/voidrot/charts/compare/cloudflared-v1.1.0...cloudflared-v1.1.1) (2026-01-22)
 
 
