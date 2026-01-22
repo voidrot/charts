@@ -4,7 +4,9 @@ metadata:
   name: {{ include "cloudflared.fullname" . }}
   labels:
     {{- include "cloudflared.labels" . | nindent 4 }}
-    {{- .Values.extraLabels | nindent 4 }}
+    {{- with .Values.extraLabels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
@@ -48,9 +50,9 @@ spec:
             - --metrics
             - 0.0.0.0:{{ .Values.service.port }}
             {{- with .Values.extraCommands }}
-{{- if gt (len .) 0 }}
-{{- toYaml . | nindent 12 }}
-{{- end }}
+            {{- if gt (len .) 0 }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
             {{- end }}
             - run
           ports:

@@ -42,18 +42,18 @@
       "title": "autoscaling",
       "type": "object"
     },
-    "extra_commands": {
+    "extraCommands": {
       "description": "Extra command arguments appended before `run` in the container `command`.\nExample: extra_commands: [\"--loglevel\",\"info\"]",
       "items": {
         "required": []
       },
-      "title": "extra_commands",
+      "title": "extraCommands",
       "type": "array"
     },
-    "extra_labels": {
+    "extraLabels": {
       "additionalProperties": false,
       "required": [],
-      "title": "extra_labels",
+      "title": "extraLabels",
       "type": "object"
     },
     "fullnameOverride": {
@@ -428,8 +428,8 @@
     "nodeSelector",
     "tolerations",
     "affinity",
-    "extra_commands",
-    "extra_labels",
+    "extraCommands",
+    "extraLabels",
     "tunnel"
   ],
   "type": "object"

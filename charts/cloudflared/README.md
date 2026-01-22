@@ -1,6 +1,6 @@
 # cloudflared
 
-![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2026.1.1](https://img.shields.io/badge/AppVersion-2026.1.1-informational?style=flat-square)
+![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2026.1.1](https://img.shields.io/badge/AppVersion-2026.1.1-informational?style=flat-square)
 
 Helm chart to deploy Cloudflare Tunnel (cloudflared) as a Kubernetes Deployment
 
@@ -15,7 +15,6 @@ Helm chart to deploy Cloudflare Tunnel (cloudflared) as a Kubernetes Deployment
 ## Source Code
 
 * <https://github.com/cloudflare/cloudflared>
-* <https://github.com/cloudflare/helm-charts/tree/main/charts/cloudflare-tunnel-remote>
 
 ## Values
 
@@ -26,8 +25,8 @@ Helm chart to deploy Cloudflare Tunnel (cloudflared) as a Kubernetes Deployment
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
-| extra_commands | list | `[]` |  |
-| extra_labels | object | `{}` |  |
+| extraCommands | list | `[]` |  |
+| extraLabels | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"cloudflare/cloudflared"` |  |
