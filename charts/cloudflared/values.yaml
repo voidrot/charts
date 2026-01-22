@@ -1,4 +1,4 @@
-# Default values for frontend.
+# Default values for cloudflared.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -7,7 +7,7 @@ replicaCount: 1
 
 # This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
 image:
-  repository: nginx
+  repository: cloudflare/cloudflared
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
@@ -21,14 +21,14 @@ fullnameOverride: ""
 
 # This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
 serviceAccount:
-  # Specifies whether a service account should be created
+  # Specifies whether a service account should be created.
   create: true
   # Automatically mount a ServiceAccount's API credentials?
   automount: true
-  # Annotations to add to the service account
+  # Annotations to add to the service account.
   annotations: {}
   # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
+  # If not set and create is true, a name is generated using the fullname template.
   name: ""
 
 # This is for setting Kubernetes Annotations to a Pod.
@@ -41,37 +41,21 @@ podLabels: {}
 podSecurityContext: {}
   # fsGroup: 2000
 
-securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+securityContext:
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 65532
 
 # This is for setting up a service more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/
 service:
   # This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
   type: ClusterIP
   # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
-  port: 80
-
-# This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
-ingress:
-  enabled: false
-  className: ""
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: chart-example.local
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+  port: 2000
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -88,12 +72,12 @@ resources: {}
 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 livenessProbe:
   httpGet:
-    path: /
-    port: http
+    path: /ready
+    port: metrics
 readinessProbe:
   httpGet:
-    path: /
-    port: http
+    path: /ready
+    port: metrics
 
 # This section is for setting up autoscaling more information can be found here: https://kubernetes.io/docs/concepts/workloads/autoscaling/
 autoscaling:
@@ -105,19 +89,41 @@ autoscaling:
 
 # Additional volumes on the output Deployment definition.
 volumes: []
-# - name: foo
-#   secret:
-#     secretName: mysecret
-#     optional: false
+  # - name: foo
+  #   secret:
+  #     secretName: mysecret
+  #     optional: false
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts: []
-# - name: foo
-#   mountPath: "/etc/foo"
-#   readOnly: true
+  # - name: foo
+  #   mountPath: "/etc/foo"
+  #   readOnly: true
 
 nodeSelector: {}
 
 tolerations: []
 
 affinity: {}
+
+# Extra command arguments appended before `run` in the container `command`.
+# Example: extra_commands: ["--loglevel","info"]
+extra_commands: []
+
+# Tunnel configuration for cloudflared
+tunnel:
+  # Enable mounting tunnel credentials into the pod
+  enabled: true
+  # If true and `credentials` is provided, chart will create a Secret named
+  # "<fullname>-tunnel" containing the credentials under `secretKey`.
+  createSecret: false
+  # When using an existing Secret, set its name here. If empty and createSecret
+  # is true, the chart will create a secret named "<fullname>-tunnel".
+  secretName: ""
+  # Key within the Secret that contains the tunnel token
+  secretKey: token
+  # Plaintext credentials content to store in the created Secret. Will be
+  # base64-encoded by the template. Leave empty when using an existing secret.
+  credentials: ""
+  # (Not used when exposing the token via env) Where to mount the secret inside the container
+  mountPath: /etc/cloudflared

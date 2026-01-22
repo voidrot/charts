@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "frontend.fullname" . }}
+  name: {{ include "cloudflared.fullname" . }}
   labels:
-    {{- include "frontend.labels" . | nindent 4 }}
+    {{- include "cloudflared.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "frontend.selectorLabels" . | nindent 6 }}
+      {{- include "cloudflared.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,7 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "frontend.labels" . | nindent 8 }}
+        {{- include "cloudflared.labels" . | nindent 8 }}
         {{- with .Values.podLabels }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
@@ -27,7 +27,7 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "frontend.serviceAccountName" . }}
+      serviceAccountName: {{ include "cloudflared.serviceAccountName" . }}
       {{- with .Values.podSecurityContext }}
       securityContext:
         {{- toYaml . | nindent 8 }}
@@ -40,8 +40,20 @@ spec:
           {{- end }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: 
+            - cloudflared
+            - tunnel
+            - --no-autoupdate
+            - --metrics
+            - 0.0.0.0:{{ .Values.service.port }}
+            {{- with .Values.extra_commands }}
+{{- if gt (len .) 0 }}
+{{- toYaml . | nindent 12 }}
+{{- end }}
+            {{- end }}
+            - run
           ports:
-            - name: http
+            - name: metrics
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           {{- with .Values.livenessProbe }}
@@ -56,13 +68,17 @@ spec:
           resources:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          {{- with .Values.volumeMounts }}
-          volumeMounts:
-            {{- toYaml . | nindent 12 }}
+          {{- if .Values.tunnel.enabled }}
+          env:
+            - name: TUNNEL_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{- if .Values.tunnel.createSecret }}{{ include "cloudflared.fullname" . }}-tunnel{{- else }}{{ .Values.tunnel.secretName }}{{- end }}
+                  key: {{ .Values.tunnel.secretKey }}
           {{- end }}
-      {{- with .Values.volumes }}
+      {{- if .Values.volumes }}
       volumes:
-        {{- toYaml . | nindent 8 }}
+        {{- toYaml .Values.volumes | nindent 8 }}
       {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:

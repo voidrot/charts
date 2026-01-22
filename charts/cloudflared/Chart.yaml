@@ -1,6 +1,6 @@
 apiVersion: v2
-name: driftnet-frontend
-description: Frontend for Driftnet
+name: cloudflared
+description: Helm chart to deploy Cloudflare Tunnel (cloudflared) as a Kubernetes Deployment
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -15,10 +15,23 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.1.1
+version: 0.1.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: "0.0.1"
+appVersion: "2026.1.1"
+
+home: https://github.com/cloudflare/cloudflared
+icon: https://www.cloudflare.com/favicon.ico
+sources:
+  - https://github.com/cloudflare/cloudflared
+  - https://github.com/cloudflare/helm-charts/tree/main/charts/cloudflare-tunnel-remote
+keywords:
+  - cloudflared
+  - cloudflare
+  - tunnel
+  - ingress
+maintainers:
+  - name: voidrot
