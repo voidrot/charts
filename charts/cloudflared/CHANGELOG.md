@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/voidrot/charts/compare/cloudflared-v1.1.0...cloudflared-v1.1.1) (2026-01-22)
+
+
+### Bug Fixes
+
+* Rename extra_commands to extraCommands for consistency ([a2b8fca](https://github.com/voidrot/charts/commit/a2b8fcacb0b7803528ef26e37c48850f5acdb2fe))
+* Rename extra_labels to extraLabels ([a2b8fca](https://github.com/voidrot/charts/commit/a2b8fcacb0b7803528ef26e37c48850f5acdb2fe))
+
 ## [1.1.0](https://github.com/voidrot/charts/compare/cloudflared-v1.0.1...cloudflared-v1.1.0) (2026-01-22)
 
 
