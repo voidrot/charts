@@ -1,6 +1,6 @@
 {
   "force-tag-creation": true,
-  "skip-github-release": true,
+  "skip-github-release": false,
   "packages": {
     "charts/cloudflared": {
       "release-type": "helm",
