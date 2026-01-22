@@ -1,8 +1,10 @@
 {
+  "force-tag-creation": true,
+  "skip-github-release": true,
   "packages": {
     "charts/cloudflared": {
       "release-type": "helm",
-      "changelog-path": "charts/cloudflared/CHANGELOG.md",
+      "changelog-path": "CHANGELOG.md",
       "package-name": "cloudflared"
     }
   }
