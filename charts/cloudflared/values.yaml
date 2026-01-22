@@ -110,6 +110,8 @@ affinity: {}
 # Example: extra_commands: ["--loglevel","info"]
 extra_commands: []
 
+extra_labels: {}
+
 # Tunnel configuration for cloudflared
 tunnel:
   # Enable mounting tunnel credentials into the pod
