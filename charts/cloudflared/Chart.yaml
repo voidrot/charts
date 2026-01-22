@@ -27,7 +27,6 @@ home: https://github.com/cloudflare/cloudflared
 icon: https://www.cloudflare.com/favicon.ico
 sources:
   - https://github.com/cloudflare/cloudflared
-  - https://github.com/cloudflare/helm-charts/tree/main/charts/cloudflare-tunnel-remote
 keywords:
   - cloudflared
   - cloudflare

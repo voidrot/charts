@@ -50,6 +50,12 @@
       "title": "extra_commands",
       "type": "array"
     },
+    "extra_labels": {
+      "additionalProperties": false,
+      "required": [],
+      "title": "extra_labels",
+      "type": "object"
+    },
     "fullnameOverride": {
       "default": "",
       "title": "fullnameOverride",
@@ -423,6 +429,7 @@
     "tolerations",
     "affinity",
     "extra_commands",
+    "extra_labels",
     "tunnel"
   ],
   "type": "object"
